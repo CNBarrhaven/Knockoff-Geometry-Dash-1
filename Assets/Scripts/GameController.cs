@@ -9,12 +9,29 @@ public class GameController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text scoreText;
     int score = 0;
+    public GameObject[] shapePrefabs;
+    public float spawnDelay = 2;
+    public float spawnTime = 3;
 
+    public void Start()
+    {
+        print("game started");
+        gameOverPanel.SetActive(false);
+        InvokeRepeating("Spawn", spawnDelay, spawnTime);
+    }
+    void Spawn()
+    {
+        int randomInt = Random.Range(0, shapePrefabs.Length);
+        Vector3 randomspawn = new Vector3(7.29f, -3.95f, 10f);
+        //int randomInt = 1;
+        Instantiate(shapePrefabs[randomInt], randomspawn, Quaternion.identity);
+    }
     public void GameOver()
     {
-        Time.timeScale = 0;
+        
         scoreText.gameObject.SetActive(false);
         gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void IncrementScore()
@@ -22,4 +39,5 @@ public class GameController : MonoBehaviour
         score++;
         scoreText.text = score.ToString();
     }
+
 }
