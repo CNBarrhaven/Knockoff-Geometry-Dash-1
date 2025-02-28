@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     {
         int randomInt = Random.Range(0, shapePrefabs.Length);
         Vector3 randomspawn = new Vector3(7.29f, -3.95f, 10f);
-        //int randomInt = 1;
+        //int randomInt = 4;
         Instantiate(shapePrefabs[randomInt], randomspawn, Quaternion.identity);
     }
     public void GameOver()

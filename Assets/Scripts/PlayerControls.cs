@@ -24,8 +24,14 @@ public class PlayerControls : MonoBehaviour
             rb.AddForce(Vector3.up * jumpPower * rb.mass * rb.gravityScale * 20f);
 
         }
-        
-            if(transform.position.x < posX) 
+
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            rb.AddForce(Vector3.up * jumpPower * rb.mass * rb.gravityScale * 20f);
+
+        }
+
+        if (transform.position.x < posX) 
             {
                 GameOver();
             }
